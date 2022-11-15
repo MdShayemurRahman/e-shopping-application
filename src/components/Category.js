@@ -15,9 +15,4 @@ const Category = () => {
 
 export default Category;
 
-/*<div className='p-6 border w-48 h-screen bg-blue-900 text-white font-bold'>
-      <p>All Products</p>
-      <p>Mens</p>
-      <p>Womens</p>
-      <p>Childrens</p> 
-  </div>*/
+

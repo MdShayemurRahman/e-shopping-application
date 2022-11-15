@@ -28,7 +28,3 @@ const Items = (props) => {
 };
 
 export default Items;
-
-{
-  /*  */
-}

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { commerce } from '../lib/commerce';
 import ListItems from '../components/ListItems';
-import Cartpage from '../Pages/Cartpage';
-// import Category from '../components/Category';
-// import Search from '../components/Search';
+
 
 const Homepage = () => {
   const [products, setProducts] = useState([]);
