@@ -1,11 +1,14 @@
-import React from 'react'
+import React from 'react';
 
-const Cartpage = () => {
+const Cartpage = ({ cart }) => {
+  
+
   return (
     <div>
-      This is Cart
+      <h2>Your Shopping Cart</h2>
+      {/* {isEmpty ? <EmptyCart /> : <FilledCart />} */}
     </div>
-  )
-}
+  );
+};
 
-export default Cartpage
+export default Cartpage;
