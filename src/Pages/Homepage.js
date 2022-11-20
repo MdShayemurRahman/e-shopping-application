@@ -1,48 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { commerce } from '../lib/commerce';
+import React from 'react';
 import ListItems from '../components/ListItems';
 
-
-const Homepage = () => {
-  const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({});
-
-  const fetchProducts = async () => {
-    const { data } = await commerce.products.list();
-    setProducts(data);
-  };
-
-  const fetchCart = async () => {
-    const cart = await commerce.cart.retrieve();
-
-    setCart(cart);
-  };
-
-  const handleAddToCart = async (productId, quantity) => {
-    const item = await commerce.cart.add(productId, quantity);
-
-    setCart(item);
-  };
-
-  useEffect(() => {
-    fetchProducts();
-    fetchCart();
-  }, []);
-
-  console.log(cart);
-
+const Homepage = ({products, onAddToCart}) => {
   return (
     <div className='flex justify-between'>
-      {/* <Category /> */}
-
       <section>
-        <ListItems products={products} onAddToCart={handleAddToCart} />
+        <ListItems products={products} onAddToCart={onAddToCart}  />
       </section>
-      {/* <section>
-        <Cartpage cart={cart} />
-      </section> */}
-
-      {/* <Search /> */}
     </div>
   );
 };
