@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import { commerce } from './lib/commerce';
-import Layout from './Pages/Layout';
+import Layout from './Layout';
 import PageNotFound from './Pages/PageNotFound';
 import Homepage from './Pages/Homepage';
 import Cartpage from './Pages/Cartpage';
