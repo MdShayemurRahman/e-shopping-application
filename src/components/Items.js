@@ -18,7 +18,7 @@ const Items = (props) => {
 
         <button
           onClick={() => onAddToCart(id, 1)}
-          className='my-2 p-1 transition ease-in duration-200 uppercase rounded-full hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none'
+          className='my-2 p-1 transition ease-in duration-200 uppercase rounded hover:bg-gray-800 hover:text-white border-2 border-gray-900 focus:outline-none'
         >
           Add to cart
         </button>

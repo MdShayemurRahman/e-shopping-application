@@ -25,6 +25,21 @@ const App = () => {
     setCart(item);
   };
 
+  const handleUpdateCartQty = async (productId, quantity) => {
+    const { cart } = await commerce.cart.update(productId, { quantity });
+    setCart(cart);
+  };
+
+  const handleRemoveFromCart = async (productId) => {
+    const { cart } = await commerce.cart.remove(productId);
+    setCart(cart);
+  };
+
+  const handleEmptyCart = async () => {
+    const { cart } = await commerce.cart.empty();
+    setCart(cart);
+  };
+
   useEffect(() => {
     fetchProducts();
     fetchCart();
@@ -42,7 +57,12 @@ const App = () => {
                 <Homepage products={products} onAddToCart={handleAddToCart} />
               }
             />
-            <Route path='carts' element={<Cartpage cart={cart} />} />
+            <Route
+              path='carts'
+              element={
+                <Cartpage cart={cart} handleEmptyCart={handleEmptyCart} />
+              }
+            />
           </Route>
           <Route path='*' element={<PageNotFound />} />
         </Routes>
