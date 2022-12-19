@@ -21,7 +21,7 @@ const App = () => {
 
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
-    console.log(item);
+
     setCart(item);
   };
 
@@ -46,7 +46,6 @@ const App = () => {
     fetchCart();
   }, []);
 
-  // console.log(cart);
   return (
     <>
       <BrowserRouter>
