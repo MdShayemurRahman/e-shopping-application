@@ -26,8 +26,6 @@ const App = () => {
   };
 
   const handleUpdateCartQty = async (productId, quantity) => {
-    console.log(productId);
-    console.log(quantity);
     const item = await commerce.cart.update(productId, { quantity });
     setCart(item);
   };
