@@ -1,12 +1,7 @@
 import React from 'react';
 import CartItems from '../components/CartItems';
 
-const Cartpage = ({
-  cart,
-  handleEmptyCart,
-  handleRemoveFromCart,
-  handleUpdateCartQty,
-}) => {
+const Cartpage = ({ cart, onEmptyCart, onUpdateCart, onRemoveFromCart }) => {
   const EmptyCart = () => (
     <>
       <div className='container mx-auto mt-10'>
@@ -40,8 +35,8 @@ const Cartpage = ({
         <CartItems
           item={item}
           key={item.id}
-          handleUpdateCartQty={handleUpdateCartQty}
-          handleRemoveFromCart={handleRemoveFromCart}
+          onUpdateCart={onUpdateCart}
+          onRemoveFromCart={onRemoveFromCart}
         />
       ))}
 
@@ -59,7 +54,7 @@ const Cartpage = ({
                 </button>
                 <button
                   className='mx-4 p-3 bg-red-400 rounded'
-                  onClick={handleEmptyCart}
+                  onClick={onEmptyCart}
                 >
                   Remove All
                 </button>

@@ -8,7 +8,7 @@ import Cartpage from './Pages/Cartpage';
 
 const App = () => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState();
 
   const fetchProducts = async () => {
     const { data } = await commerce.products.list();
@@ -21,23 +21,26 @@ const App = () => {
 
   const handleAddToCart = async (productId, quantity) => {
     const item = await commerce.cart.add(productId, quantity);
-
+    console.log(item);
     setCart(item);
   };
 
   const handleUpdateCartQty = async (productId, quantity) => {
-    const { cart } = await commerce.cart.update(productId, { quantity });
-    setCart(cart);
+    console.log(productId);
+    console.log(quantity);
+    const item = await commerce.cart.update(productId, { quantity });
+    setCart(item);
   };
 
   const handleRemoveFromCart = async (productId) => {
-    const { cart } = await commerce.cart.remove(productId);
-    setCart(cart);
+    const item = await commerce.cart.remove(productId);
+
+    setCart(item);
   };
 
   const handleEmptyCart = async () => {
-    const { cart } = await commerce.cart.empty();
-    setCart(cart);
+    const item = await commerce.cart.empty();
+    setCart(item);
   };
 
   useEffect(() => {
@@ -45,12 +48,12 @@ const App = () => {
     fetchCart();
   }, []);
 
-  console.log(cart);
+  // console.log(cart);
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<Layout totalItems={cart.line_items} />}>
+          <Route path='/' element={<Layout totalItems={cart?.line_items} />}>
             <Route
               index
               element={
@@ -60,7 +63,12 @@ const App = () => {
             <Route
               path='carts'
               element={
-                <Cartpage cart={cart} handleEmptyCart={handleEmptyCart} />
+                <Cartpage
+                  cart={cart}
+                  onEmptyCart={handleEmptyCart}
+                  onUpdateCart={handleUpdateCartQty}
+                  onRemoveFromCart={handleRemoveFromCart}
+                />
               }
             />
           </Route>

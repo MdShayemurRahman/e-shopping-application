@@ -1,6 +1,6 @@
 import React from 'react';
 
-const CartItems = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
+const CartItems = ({ item, onUpdateCart, onRemoveFromCart }) => {
   return (
     <>
       <div className='container mx-auto my-10'>
@@ -14,13 +14,23 @@ const CartItems = ({ item, handleUpdateCartQty, handleRemoveFromCart }) => {
               </div>
               <div>
                 <div className='flex items-center justify-between'>
-                  <button className='px-1 mx-2 bg-purple-400'>+</button>
+                  <button
+                    onClick={()=>onUpdateCart(item.id, item.quantity - 1)}
+                    className='px-1 mx-2 bg-purple-400'
+                  >
+                    -
+                  </button>
                   <p>{item.quantity}</p>
-                  <button className='px-1 mx-2 bg-purple-400'>-</button>
+                  <button
+                    onClick={()=>onUpdateCart(item.id, item.quantity + 1)}
+                    className='px-1 mx-2 bg-purple-400'
+                  >
+                    +
+                  </button>
                 </div>
                 <div className='mt-3'>
                   <button
-                    // onClick={() => handleRemoveFromCart(item.id)}
+                    onClick={() => onRemoveFromCart(item.id)}
                     className='mx-1 p-1 bg-red-400 rounded'
                   >
                     Remove

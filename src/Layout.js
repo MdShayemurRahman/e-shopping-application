@@ -1,9 +1,8 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
 
 const Layout = ({ totalItems }) => {
-
   const location = useLocation();
-  
+
   return (
     <>
       <nav className='p-12 shadow-lg flex flex-wrap items-center justify-between'>
